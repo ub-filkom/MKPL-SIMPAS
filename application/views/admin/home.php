@@ -58,9 +58,9 @@
 
 				<div class="navbar-header pull-left">
 					<a href="index.html" class="navbar-brand">
-						<small>
+						<small><font face="verdana" color="green">
 							<i class="fa fa-leaf"></i>
-							Admin
+							Admin</font>
 						</small>
 					</a>
 				</div>
