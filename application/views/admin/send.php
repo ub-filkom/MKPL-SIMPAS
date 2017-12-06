@@ -141,7 +141,7 @@
 				<ul class="nav nav-list">
 					<li class="">
 						<a href="<?php echo base_url();?>index.php/home">
-							<i class="menu-icon fa fa-tachometer"></i>
+							<i class="menu-icon fa fa-home"></i>
 							<span class="menu-text"> Dashboard </span>
 						</a>
 
@@ -151,7 +151,7 @@
 
 					<li class="active">
 						<a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa fa-pencil-square-o"></i>
+							<i class="menu-icon fa fa-pencil"></i>
 							<span class="menu-text"> Create Form </span>
 
 							<b class="arrow fa fa-angle-down"></b>
@@ -180,7 +180,7 @@
 						</ul>
                                                 <li class="">
 						<a href="<?php echo base_url();?>index.php/admin/activity">
-							<i class="menu-icon fa fa-laptop"></i>
+							<i class="menu-icon fa fa-exchange"></i>
 							<span class="menu-text"> Activity </span>
 						</a>
 
