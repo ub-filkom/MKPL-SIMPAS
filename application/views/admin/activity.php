@@ -161,6 +161,15 @@
 								</a>
 
 								<b class="arrow"></b>
+							</li> 
+                                                        
+                                                        <li class="">
+								<a href="<?php echo base_url();?>index.php/admin/inbox">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Surat Keluar
+								</a>
+
+								<b class="arrow"></b>
 							</li>
 
 						                             

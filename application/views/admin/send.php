@@ -1,13 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+ 
+           
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
 		<title>SIMPAS - BLP</title>
 
 		<meta name="description" content="Common form elements and layouts" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-
+                <script src="<?php echo base_url();?>assets/ckeditor/ckeditor.js"></script>
+                <script src="<?php echo base_url();?>assets/ckeditor/samples/old/sample.js"></script>
+           
+                <meta name="ckeditor-sample-required-plugins" content="sourcearea">
+                <meta name="ckeditor-sample-name" content="Full page support">
+                <meta name="ckeditor-sample-group" content="Plugins">
+                <meta name="ckeditor-sample-description" content="CKEditor inserted with a JavaScript call and used to edit the whole page from &lt;html&gt; to &lt;/html&gt;.">
 		<!-- bootstrap & fontawesome -->
 		<link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="<?php echo base_url();?>assets/font-awesome/4.5.0/css/font-awesome.min.css" />
@@ -152,7 +160,7 @@
 						<b class="arrow"></b>
 
 						<ul class="submenu">
-							<li class="active">
+							<li class="">
 								<a href="<?php echo base_url();?>index.php/admin/inbox">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Surat Masuk
@@ -160,16 +168,15 @@
 
 								<b class="arrow"></b>
 							</li>
-                                                        <li class="">
-								<a href="<?php echo base_url();?>index.php/admin/inbox">
+
+							<li class="active">
+								<a href="<?php echo base_url();?>index.php/admin/send">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Surat Keluar
 								</a>
 
 								<b class="arrow"></b>
-							</li>
-
-							                              
+							</li>                               
 						</ul>
                                                 <li class="">
 						<a href="<?php echo base_url();?>index.php/admin/activity">
@@ -202,7 +209,7 @@
 							<li>
 								<a href="#">Create Mail</a>
 							</li>
-							<li class="active">Surat Masuk</li>
+							<li class="active">Surat Keluar</li>
 						</ul><!-- /.breadcrumb -->
 
 						<div class="nav-search" id="nav-search">
@@ -285,7 +292,7 @@
 
 						<div class="page-header">
 							<h1>
-								Surat Masuk
+								Surat Keluar
 								<small>
 									<i class="ace-icon fa fa-angle-double-right"></i>
 									Input Data Surat
@@ -294,17 +301,21 @@
 						</div><!-- /.page-header -->
 
 						<div class="row">
-							<div class="col-xs-12">
+							<div class="col-xs-11">
 								<!-- PAGE CONTENT BEGINS -->
                                                               
-								<form class="form-horizontal" role="form" action="<?php echo base_url()."index.php/admin/upload/input"?>" method="post" enctype="multipart/form-data">
-                                                                          
-
-									<div class="form-group">
+								<form class="form-horizontal" role="form" action="<?php echo base_url()."index.php/admin/upload/suratkeluar"?>" method="post" enctype="multipart/form-data">                              
+			                                                 <div class="form-group">
 										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> No. Surat </label>
 
-										<div class="col-sm-9">
-											<input type="text" id="form-field-1" name="nosurat" placeholder="Nomor Surat" class="col-xs-10 col-sm-5" />
+										<div class="col-xs-10 col-sm-5">                                                                                  
+                                                                                    <select class="chosen-select form-control" required="required"  name="nosurat3"id="form-field-select-3" data-placeholder="No. Surat">
+																<option value="">  </option>
+																<option value="BLP-I">BLP-I</option>
+																<option value="BLP-II">BLP-II</option>
+                                                                                                                                <option value="BLP-III">BLP-III</option>
+																
+															</select>
 										</div>
 									</div>
                                                                       
@@ -312,24 +323,47 @@
 										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Perihal </label>
 
 										<div class="col-sm-9">
-											<input type="text" id="form-field-1" name="perihal" placeholder="Perihal" class="col-xs-10 col-sm-5" />
+											<input type="text" id="form-field-1" name="perihal" required="required" placeholder="Perihal" class="col-xs-10 col-sm-5" />
 										</div>
 									</div>
                                                                         <div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Pengirim </label>
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Tujuan </label>
 
 										<div class="col-sm-9">
-											<input type="text" id="form-field-1" name="pengirim" placeholder="Pengirim" class="col-xs-10 col-sm-5" />
+											<input type="text" id="form-field-1" required="required" name="tujuan" placeholder="Tujuan" class="col-xs-10 col-sm-5" />
 										</div>
+									</div>
+                                                                        <div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Tembusan </label>
+										<div class="col-sm-9">										
+                                                                                        <input type="text" id="form-field-1"  required="required" name="tembusan" placeholder="Tembusan" class="col-xs-10 col-sm-5" />                                                                                      
+                                                                                </div>
+									</div>                                                                                         
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Isi Surat </label>
+                                                                        
+                                                                                <div style="padding-left: 280px ">
+                                                                            <textarea cols="80" id="editor1" name="isi" rows="10">                      
+                                                                            </textarea>
+                                                                            <script>
+                                                                                    CKEDITOR.replace( 'editor1', {
+                                                                                            fullPage: true,
+                                                                                            allowedContent: true,
+                                                                                            extraPlugins: 'wysiwygarea'
+                                                                                    });
+                                                                            </script>
+                                                                  
+                                                                            </div>
+	
 									</div>
                                                                         <div class="form-group">
 										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Status </label>
 
 										<div class="col-xs-10 col-sm-5">                                                                                  
-                                                                                    <select class="chosen-select form-control"  name="status"id="form-field-select-3" data-placeholder="Status Surat">
+                                                                                    <select class="chosen-select form-control" required="required"  name="status"id="form-field-select-3" data-placeholder="Status Surat">
 																<option value="">  </option>
+																<option value="Draf">Draf</option>
 																<option value="Proses">Proses</option>
-																<option value="Sudah Diproses">Sudah Diporses</option>
 																
 															</select>
 										</div>
@@ -340,41 +374,35 @@
                                                                                 <div class="col-xs-10 col-sm-5">
                                                                                   <div class="input-group">  
                                                                                       
-                                                                                      <input class="form-control input-mask-date" placeholder="Tanggal Surat " name="tanggalsurat" type="text" id="form-field-mask-1" data-date-format="yyyy-mm-dd" />
+                                                                                      <input class="form-control input-mask-date" required="required" placeholder="Tanggal Surat " name="tanggalsurat" type="text" id="form-field-mask-1" data-date-format="yyyy-mm-dd" />
                                                                                      <span class="input-group-addon">
                                                                                             <i class="fa fa-calendar bigger-110"></i>
                                                                                      </span>
                                                                                  </div>
                                                                                 </div>                                                                                                                                                                                                             															                                   
-									</div>
-         
-                                                                        <div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Tanggal Masuk Surat </label>															
-													
-                                                                                <div class="col-xs-10 col-sm-5">
-                                                                                  <div class="input-group">  
-                                                                                      
-                                                                                      <input class="form-control input-mask-date" placeholder="Tanggal Surat " name="tanggalmsurat" type="text" id="form-field-mask-1" data-date-format="yyyy-mm-dd" />
-                                                                                     <span class="input-group-addon">
-                                                                                            <i class="fa fa-calendar bigger-110"></i>
-                                                                                     </span>
-                                                                                 </div>
-                                                                                </div>                                                                                                                                                                                                             															                                   
-									</div>
+									</div>                                                                          
                                                                         <div class="form-group">
 										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Sifat Surat </label>
 
 										<div class="col-xs-10 col-sm-5">                                                                                  
-                                                                                    <select class="chosen-select form-control"  name="sifatsurat" id="form-field-select-3" data-placeholder="Sifat Surat">
+                                                                                    <select class="chosen-select form-control"  required="required" name="sifatsurat"id="form-field-select-3" data-placeholder="Sifat Surat">
 																<option value="">  </option>
 																<option value="Rahasia">Rahasia</option>
-																<option value="Sangat Rahasia">Sangat Rahasisa</option>
 																<option value="Umum">Umum</option>
-															</select>
+																
+                                                                                    </select>
 										</div>
 									</div>
+                     
                                                                          <div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> File </label>
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Lampiran </label>
+
+										<div class="col-sm-9">
+											<input type="text" id="form-field-1" required="required" name="lampiran" placeholder="Lampiran" class="col-xs-10 col-sm-5" />
+										</div>
+									</div>
+                                                                        <div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> File Lampiran </label>
 
 										<div class="col-xs-10 col-sm-5">                                                                                  
                                                                                    <div class="form-group">
@@ -384,9 +412,8 @@
                                                                                     </div>
 										</div>
 									</div>
-                                                                    <input class="hidden" name="jenis" value="surat masuk">
-                                                                           
-                                                                    
+                                                                    <input class="hidden" name="nosurat1" value="810"/>
+                                                                    <input class="hidden" name="jenis" value="surat Keluar">
 									<div class="clearfix form-actions">
 										<div class="col-md-offset-3 col-md-9">
 											<button class="btn btn-info" type="submit>
@@ -916,6 +943,10 @@
 				});
 			
 			});
-		</script>
+                        
+          
+                    
+                </script>
+             
 	</body>
 </html>
